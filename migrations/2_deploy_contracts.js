@@ -1,9 +1,12 @@
-const SimpleStorage = artifacts.require("SimpleStorage");
-const TutorialToken = artifacts.require("TutorialToken");
-const ComplexStorage = artifacts.require("ComplexStorage");
+
+const SkillNft = artifacts.require("SkillNft");
+const ClientRating = artifacts.require("ClientRating");
+const ChargingSiteNft = artifacts.require("ChargingSiteNft");
+const EngineerRating = artifacts.require("EngineerRating")
+const Auction = artifacts.require("Auction")
 
 module.exports = function(deployer) {
-  deployer.deploy(SimpleStorage);
-  deployer.deploy(TutorialToken);
-  deployer.deploy(ComplexStorage);
+  deployer.deploy(SkillNft).then(() => deployer.deploy(EngineerRating, SkillNft.address));
+  deployer.deploy(ChargingSiteNft).then(() => deployer.deploy(ClientRating, ChargingSiteNft.address));
+  deployer.deploy(Auction);
 };

@@ -4,6 +4,7 @@ import { Drizzle } from "@drizzle/store";
 import drizzleOptions from "./drizzleOptions";
 import MyComponent from "./MyComponent";
 import "./App.css";
+import Router from "./Router";
 
 const drizzle = new Drizzle(drizzleOptions);
 
@@ -19,7 +20,8 @@ const App = () => {
           }
 
           return (
-            <MyComponent drizzle={drizzle} drizzleState={drizzleState} />
+            // <MyComponent drizzle={drizzle} drizzleState={drizzleState} />
+            <Router></Router>
           )
         }}
       </DrizzleContext.Consumer>
