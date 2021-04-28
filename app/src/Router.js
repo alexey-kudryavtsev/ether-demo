@@ -26,7 +26,7 @@ export default function RootRouter() {
                     <Route path="/lms/test/:id">
                         <LmsTest />
                     </Route>
-                    <Route path="/lms/check-cert/:id">
+                    <Route path="/lms/check-cert">
                         <LmsCheckCert />
                     </Route>
 

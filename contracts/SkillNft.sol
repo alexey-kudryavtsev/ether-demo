@@ -13,14 +13,14 @@ contract SkillNft is ERC721URIStorage {
 
     constructor() ERC721("Skill", "SKL") {}
 
-    function awardSkill(address player, string memory tokenURI)
+    function awardSkill(address engineer, string memory tokenURI)
         public
         returns (uint256)
     {
         _tokenIds.increment();
 
         uint256 newSkillId = _tokenIds.current();
-        _mint(player, newSkillId);
+        _mint(engineer, newSkillId);
         _setTokenURI(newSkillId, tokenURI);
         emit AwardSkillEvent(newSkillId);
         return newSkillId;
