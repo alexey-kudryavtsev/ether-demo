@@ -8,7 +8,6 @@ const contractEventNotifier = store => next => action => {
         const contractEvent = action.event.event
         const message = action.event.returnValues._message
         const display = `${contract}(${contractEvent}): ${message}`
-        console.log("777")
     }
     return next(action)
 }
