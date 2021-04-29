@@ -1,8 +1,12 @@
 
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
+import "./ChargingSiteNft.sol";
 
 contract Auction {
+
+    ChargingSiteNft public chargingSiteNft;
+
     address[] participants;
     address owner;
     mapping (address => bytes32) public betHashes;
@@ -22,7 +26,8 @@ contract Auction {
         _;
     }
 
-    constructor() {
+    constructor(ChargingSiteNft _chargingSiteNft) {
+        chargingSiteNft = _chargingSiteNft;
         owner = msg.sender;
     }
 
@@ -64,6 +69,7 @@ contract Auction {
                 }
                 winner = maybeWinner;
                 winningBet = min;
+                chargingSiteNft.mint(winner);
                 emit WinnerSelected(winner, min);
             }
         } else {

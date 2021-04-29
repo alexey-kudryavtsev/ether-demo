@@ -10,9 +10,9 @@ import AuctionAddParticipant from "./AuctionAddParticipant"
 import AuctionResults from "./AuctionResults"
 import LmsCheckCert from "./LmsCheckCert"
 import LmsTest from "./LmsTest"
-import RatingListClinets from "./RatingListClients"
+import RatingListChargingSites from "./RatingListChargingSites"
 import RatingListEngineers from "./RatingListEngineers"
-import RatingRateClient from "./RatingRateClient"
+import RatingRateChargingSite from "./RatingRateChargingSite"
 import RatingRateEngineer from "./RatingRateEngineer"
 
 export default function RootRouter() {
@@ -34,14 +34,14 @@ export default function RootRouter() {
                     <Route path="/ratings/rate-engineer/:id">
                         <RatingRateEngineer />
                     </Route>
-                    <Route path="/ratings/rate-client/:id">
-                        <RatingRateClient />
+                    <Route path="/ratings/rate-charging-site/:id">
+                        <RatingRateChargingSite />
                     </Route>
                     <Route path="/ratings/list-engineers">
                         <RatingListEngineers />
                     </Route>
-                    <Route path="/ratings/list-clients">
-                        <RatingListClinets />
+                    <Route path="/ratings/list-charging-sites">
+                        <RatingListChargingSites />
                     </Route>
 
                     {/* auctions */}

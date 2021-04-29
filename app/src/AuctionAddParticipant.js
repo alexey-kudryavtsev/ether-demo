@@ -13,12 +13,12 @@ const InnerComponent = ({ drizzle, drizzleState, id }) => {
   let contract = drizzle.contracts.Auction
   let [state, setState] = useState({});
   let participants = drizzleState.contracts.Auction.listParticipants;
-  useEffect(() => setState({listParticipantsId: contract.methods.listParticipants.cacheCall(), ...state}), [])
+  useEffect(() => setState({...state, listParticipantsId: contract.methods.listParticipants.cacheCall()}), [])
   let pArr = participants[state.listParticipantsId] && participants[state.listParticipantsId].value || []
   return <div>
     <p>Auction Participants</p>
     {pArr.map(el => <p>{el}</p>)}
-    <input onChange={(i) => setState({ newParticipant: i.target.value, ...state })}></input>
+    <input onChange={(i) => setState({...state, newParticipant: i.target.value })}></input>
     <button onClick={()=>contract.methods.addParticipant(state.newParticipant).send()}>Add Participant</button>
   </div>
 

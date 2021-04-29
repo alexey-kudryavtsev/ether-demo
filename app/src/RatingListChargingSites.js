@@ -10,9 +10,9 @@ import { DrizzleContext } from "@drizzle/react-plugin";
 import WithDrizzle from "./WithDrizzle";
 
 const InnerComponent = ({ drizzle, drizzleState, id }) => {
-  let contract = drizzle.contracts.EngineerRating
+  let contract = drizzle.contracts.ChargingSiteRating
   let [state, setState] = useState({});
-  let clients = drizzleState.contracts.EngineerRating.listClients;
+  let clients = drizzleState.contracts.ChargingSiteRating.listClients;
   useEffect(() => setState({...state, listClientsId: contract.methods.listClients.cacheCall()}), [])
   let pArr = clients[state.listClientsId] && clients[state.listClientsId].value || [[],[]]
   let list = []
@@ -21,7 +21,7 @@ const InnerComponent = ({ drizzle, drizzleState, id }) => {
   }
   console.log(list)
   return <div>
-    <p>Engineers</p>
+    <p>Charging Sites</p>
     {list.map(el => <p>{el[0] + " : " + (el[1] / 100)}</p>)}
   </div>
 

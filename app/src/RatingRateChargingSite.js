@@ -16,10 +16,10 @@ function useQuery() {
 
 const InnerComponent = ({ drizzle, drizzleState, id }) => {
   let query = useQuery()
-  let contract = drizzle.contracts.EngineerRating
+  let contract = drizzle.contracts.ChargingSiteRating
   let [state, setState] = useState({});
   return <div>
-    <p>Rating Enineer {id}</p>
+    <p>Rating Charging Site {id}</p>
     <input onChange={(i) => setState({...state, rating: i.target.value })}></input>
     <button onClick={()=>contract.methods.addRating.cacheSend(parseInt(state.rating), id, {from: query.get("active-account")})}>Rate!</button>
   </div>

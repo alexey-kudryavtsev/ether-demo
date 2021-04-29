@@ -32,8 +32,8 @@ const InnerComponent = ({ drizzle, drizzleState, id }) => {
   } else {
     return <div>
       <p>Engineer Qualification Test</p>
-      <input type='checkbox' onChange={(i)=>setAnswerState({first: i.target.value, ...answerState})}></input>
-      <input type='checkbox' onChange={(i)=>setAnswerState({second: i.target.value, ...answerState})}></input>
+      <input type='checkbox' onChange={(i)=>setAnswerState({...answerState, first: i.target.value, })}></input>
+      <input type='checkbox' onChange={(i)=>setAnswerState({...answerState, second: i.target.value, })}></input>
       <button onClick={check(drizzle, setFailState, id, answerState)}>Check Results</button>
     </div>
   }

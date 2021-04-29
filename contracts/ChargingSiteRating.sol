@@ -1,27 +1,26 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// import ",/SkillNft.sol";
-import "./ChargingSiteNft.sol";
+import "./SkillNft.sol";
 
-contract ClientRating {
+contract ChargingSiteRating {
     struct RatingPair {
         uint32 count;
         uint32 sum;
     }
 
-    constructor(ChargingSiteNft _chargingSiteNft) {
-        chargingSiteNft = _chargingSiteNft;
+    constructor(SkillNft _skillNft) {
+        skillNft = _skillNft;
     }
 
-    ChargingSiteNft chargingSiteNft;
+    SkillNft skillNft;
 
     mapping (address => RatingPair) public ratingMap;
     address[] public clients;
 
     function addRating(uint32 rating, address client) public {
-        uint256 hasSite = chargingSiteNft.balanceOf(msg.sender);
-        require(hasSite > 0);
+        uint256 hasSkill = skillNft.balanceOf(msg.sender);
+        require(hasSkill > 0);
         require(rating > 0);
         require(rating <= 5);
         if (ratingMap[client].count == 0) {

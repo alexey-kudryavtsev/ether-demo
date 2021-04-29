@@ -13,7 +13,7 @@ const check = (drizzle, state, setState, id) => () => {
   drizzle.contracts.SkillNft.methods.ownerOf(parseInt(id)).call().then((owner) => {
     drizzle.contracts.SkillNft.methods.tokenURI(parseInt(id)).call().then((uri) => {
       console.log(owner, uri)
-      setState({ owner: owner, skill: uri, ...state })
+      setState({ ...state, owner: owner, skill: uri })
     })
   })
 

@@ -1,8 +1,9 @@
 import Web3 from "web3";
 import LmsTest from "./contracts/SkillNft.json";
 import Auction from "./contracts/Auction.json";
-import ClientRating from "./contracts/ClientRating.json";
+import ChargingSiteRating from "./contracts/ChargingSiteRating.json";
 import EngineerRating from "./contracts/EngineerRating.json";
+import ChargingSiteNft from "./contracts/ChargingSiteNft.json"
 
 
 const options = {
@@ -10,7 +11,7 @@ const options = {
     block: false,
     customProvider: new Web3("ws://localhost:7545"),
   },
-  contracts: [LmsTest, Auction, ClientRating, EngineerRating],
+  contracts: [LmsTest, Auction, ChargingSiteRating, EngineerRating, ChargingSiteNft],
   events: {
     SkillNft: ["AwardSkillEvent"] 
   },

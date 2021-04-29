@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 contract ChargingSiteNft is ERC721URIStorage {
     constructor() ERC721("ChargingSite", "CHS") {}
 
-    function mint(address player) public {
-        _mint(player, 0);
+    function mint(address tokenHolder) public {
+        _mint(tokenHolder, 0);
     }
 }
