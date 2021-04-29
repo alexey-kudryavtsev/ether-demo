@@ -31,8 +31,8 @@ const sendBlindBet = (bet, nonce, id, drizzle) => {
 }
 
 const InnerComponent = ({ drizzle, drizzleState, id }) => {
-  let [nonce] = useState(localStorage.getItem(id + "-LastNonce") || Math.floor(Math.random() * Math.pow(2, 32)))
-  let [bet, setBet] = useState(localStorage.getItem(id + "-LastNonce"))
+  let [nonce] = useState(parseInt(localStorage.getItem(id + "-LastNonce") || Math.floor(Math.random() * Math.pow(2, 32))))
+  let [bet, setBet] = useState(parseInt(localStorage.getItem(id + "-LastBet")))
   useEffect(() => localStorage.setItem(id + "-LastNonce", nonce), [])
   useEffect(() => localStorage.setItem(id + "-LastBet", bet), [bet])
 
