@@ -2,12 +2,20 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   useParams
 } from "react-router-dom";
 import { DrizzleContext } from "@drizzle/react-plugin";
 import WithDrizzle from "./WithDrizzle";
+
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import Button from '@material-ui/core/Button'
 
 const InnerComponent = ({ drizzle, drizzleState, id }) => {
 
@@ -24,11 +32,18 @@ const InnerComponent = ({ drizzle, drizzleState, id }) => {
   let winningBetResult = winningBet[participantState.winningBet] && winningBet[participantState.winningBet].value || 0
 
   if (winnerResult == 0) {
-    return <div>
-      <p>Auction in progress</p>
-    </div>
+    return <Card>
+      <CardContent>
+        <h2>Auction in progress...</h2>
+      </CardContent></Card>
   } else {
-    return <p>Winner:{winnerResult}, winning bet {winningBetResult}</p>
+    return <Card>
+      <CardContent>
+        <h2>Auction ended</h2>
+        <p><b>Winner: </b>{winnerResult}</p>
+        <p><b>Winning bet: </b>{winningBetResult}</p>
+      </CardContent>
+    </Card>
   }
 
 }

@@ -2,13 +2,22 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   useParams
 } from "react-router-dom";
 import { DrizzleContext } from "@drizzle/react-plugin";
 import WithDrizzle from "./WithDrizzle";
 import AuctionResults from "./AuctionResults"
+
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField';
 
 const hashBet = (bet, nonce, web3) => {
   let encoded = web3.eth.abi.encodeParameter('uint256', parseInt(bet) * Math.pow(2, 32) + parseInt(nonce))
@@ -52,17 +61,16 @@ const InnerComponent = ({ drizzle, drizzleState, id }) => {
   }, [bbcResult, bet])
 
   if (winnerResult == 0) {
-    return <div>
-      <p>Place bet as participant [account {id}]</p>
-      <p>Blind Bets: {bbcResult} of {pArr.length}</p>
-      <input onChange={(i) => setBet(i.target.value)}></input>
-      <button onClick={() => sendBlindBet(bet, nonce, id, drizzle)}>Place Bet</button>
-    </div>
+    return <Card>
+      <CardContent>
+        <h2>Place bet as participant [{id}]</h2>
+        <p><b>Blind Bets: </b>{bbcResult} of {pArr.length}</p>
+        <TextField onChange={(i) => setBet(i.target.value)} label='Bet' margin='normal' variant='outlined' fullWidth></TextField>
+        <Button style={{marginTop: '20px'}} variant="contained" onClick={() => sendBlindBet(bet, nonce, id, drizzle)}>Place Bet</Button>
+      </CardContent>
+    </Card>
   } else {
-    return <div>
-      <p>Auction ended</p>
-      <AuctionResults></AuctionResults>
-    </div>
+    return <AuctionResults header='Auction ended'></AuctionResults>
   }
 
 }
